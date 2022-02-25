@@ -1,0 +1,12 @@
+{% extends 'smartapp/basetempl.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    {% for tor in content %}
+        {{ tor.idTeacher }}
+        {{ tor.idDiscipline }}
+        {{ tor.idGroup }}
+    {% endfor %}
+{% endblock %}
