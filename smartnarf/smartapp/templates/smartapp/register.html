@@ -1,22 +1,16 @@
-{% extends 'main/base.html' %}
+{% extends 'smartapp/basetempl.html' %}
 
 {% block title %}
 Регистрация
 {% endblock %}
 
-
 {% block content %}
     <h1>Регистрация</h1>
     <form method="post" class="container">
-        {% if 'error_empty' not in error %}
-         <h1 class="alert alert-warning">{{ error }}</h1>
-        {% endif %}
         {% csrf_token %}
 
         <h3>Имя</h3>
-        {{ form.name }}
-        <h3>Логин</h3>
-        {{ form.login }}
+        {{ form.username }}
         <h3>Пароль</h3>
         {{ form.password }}
         {{ form.password2 }}
