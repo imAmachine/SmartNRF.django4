@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import include, path
 from .models import *
-from .forms import UserRegisterForm
+#from .forms import UserRegisterForm
 
 
 def index(request):
@@ -10,5 +10,5 @@ def index(request):
 
 
 def register(request):
-    form = UserRegisterForm()
-    return render(request, 'smartapp/register.html', {'form': form})
+    #form = UserRegisterForm()
+    return render(request, 'smartapp/register.html')

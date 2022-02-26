@@ -30,19 +30,19 @@ class SubGroup(models.Model):
 
 
 # модель пользователя
-class User(models.Model):
-    username = models.CharField(max_length=80, unique=True)
-    password = models.CharField(max_length=20, validators=[MinLengthValidator(8)])
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    idSubGroup = models.ForeignKey(SubGroup, null=True, on_delete=models.CASCADE)
-    perms = models.CharField(default='user', max_length=25)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    REQUIRED_FIELDS = ['username', 'password']
-
-    def __str__(self):
-        return self.username
+# class User(models.Model):
+#     username = models.CharField(max_length=80, unique=True)
+#     password = models.CharField(max_length=20, validators=[MinLengthValidator(8)])
+#     group = models.ForeignKey(Group, on_delete=models.CASCADE)
+#     idSubGroup = models.ForeignKey(SubGroup, null=True, on_delete=models.CASCADE)
+#     perms = models.CharField(default='user', max_length=25)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+#
+#     REQUIRED_FIELDS = ['username', 'password']
+#
+#     def __str__(self):
+#         return self.username
 
 
 # модель преподавателя
@@ -65,7 +65,7 @@ class Homework(models.Model):
 # модель комментариев для каждой пары
 class Comment(models.Model):
     text = models.CharField(max_length=255)
-    idUser = models.ForeignKey(User, on_delete=models.CASCADE)
+    #idUser = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.text
