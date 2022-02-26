@@ -5,7 +5,7 @@ from .forms import UserRegisterForm
 
 
 def index(request):
-    torrents = Torrent.objects.all()
+    torrents = Lesson.objects.all()
     return render(request, 'smartapp/index.html', {'title': 'Главная страница', 'content': torrents})
 
 
