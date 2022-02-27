@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import User, Teacher, Group, Lesson, Discipline, SubGroup, Homework, Comment
+from .models import  Teacher, Group, Lesson, Discipline, SubGroup, Homework, Comment
 
 # Register your models here.
-admin.site.register(User)
+#admin.site.register(User)
 admin.site.register(Teacher)
 admin.site.register(Group)
 admin.site.register(Lesson)

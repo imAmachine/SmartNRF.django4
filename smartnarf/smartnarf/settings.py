@@ -15,6 +15,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Own user model     eta huita ne rabotaet
+AUTH_USER_MODEL = 'authentication.User'
 
 # Application definition
 
@@ -25,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'smartapp'
+    'smartapp',
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -112,3 +115,13 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Custom ERROR_HANDLER for user auth
+
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'smartnarf.exceptions.core_exception_handler',
+    'NON_FIELD_ERRORS_KEY': 'error',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'authentication.backends.JWTAuthentication',
+    ),
+}
