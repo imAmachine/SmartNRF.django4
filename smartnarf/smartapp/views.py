@@ -13,18 +13,25 @@ class IndexView(TemplateView):
     # torrents = Lesson.objects.all()
     # return render(request, 'smartapp/index.html', {'title': 'Главная страница', 'content': torrents})
 
-    def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
-        context['dataFront'] = list(Lesson.objects.all)
-        return context
+    # def get_context_data(self, **kwargs):
+    # context = super(IndexView, self).get_context_data(**kwargs)
+    # context['asd'] = '213'
+    # context['dataFront'] = Lesson.objects.filter(datetime__in='2022-02-27')
+    # return context
 
     def get(self, request, *args, **kwargs):
-        cur_btn = datetime.datetime.today().weekday()
 
-        if request.GET:
-            cur_btn = request.GET.get('cur_btn')
+        cur_btn = request.GET.get('cur_btn', datetime.datetime.today().weekday())
+        context = {
+            'cur_btn': cur_btn,
+            'dataFront': Lesson.objects.filter(datetime__week_day=int(cur_btn)+2)
+        }
 
-        return render(request, self.template_name, {'cur_btn': cur_btn})
+        # cur_btn = datetime.datetime.today().weekday()
+
+        # if request.GET:
+
+        return render(request, self.template_name, context)
 
 
 

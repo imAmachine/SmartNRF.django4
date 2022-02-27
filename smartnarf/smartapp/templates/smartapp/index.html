@@ -4,34 +4,6 @@
 {% endblock %}
 
 {% block content %}
-
-<!--    {% for tor in content %}-->
-<!--        {{ tor.idTeacher }}-->
-<!--        {{ tor.idDiscipline }}-->
-<!--        {{ tor.idGroup }}-->
-<!--        {{ tor.datetime }}-->
-<!--    {% endfor %}-->
-
-<!--<table class="table">-->
-<!--  <thead>-->
-<!--    <tr>-->
-<!--      <th scope="col">Фамилия преподавателя</th>-->
-<!--      <th scope="col">Название дисциплины</th>-->
-<!--      <th scope="col">Номер группы</th>-->
-<!--      <th scope="col">Дата и время начала</th>-->
-<!--    </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-<!--    {% for tor in content %}-->
-<!--      <tr>-->
-<!--        <td scope="row">{{ tor.idTeacher }}</td>-->
-<!--        <td>{{ tor.idDiscipline }}</td>-->
-<!--        <td>{{ tor.idGroup }}</td>-->
-<!--        <td>{{ tor.datetime }}</td>-->
-<!--      </tr>-->
-<!--    {% endfor %}-->
-<!--  </tbody>-->
-<!--</table>-->
     <a href="?cur_btn=0"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(0)'>Понедельник</button></a>
     <a href="?cur_btn=1"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(1)'>Вторник</button></a>
     <a href="?cur_btn=2"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(2)'>Среда</button></a>
@@ -41,7 +13,7 @@
     <a href="?cur_btn=6"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(6)'>Все дни</button></a>
     <div class="d-flex flex-wrap ml-3" style="width: 100%;">
         <div class="card text-white bg-secondary mb-3 me-3" style="width: 15rem;">
-            <div class="card-header">{{ cur_btn }}</div>
+            <div class="card-header">{{ dataFront }}</div>
             <div class="card-body">
                 <h5 class="card-title"></h5>
                 <p class="card-text"></p>
