@@ -32,24 +32,22 @@
 <!--    {% endfor %}-->
 <!--  </tbody>-->
 <!--</table>-->
-    <button type="button" class="btn btn-outline-primary mb-3" onclick='func(0)'>Понедельник</button>
-    <button type="button" class="btn btn-outline-primary mb-3" onclick='func(1)'>Вторник</button>
-    <button type="button" class="btn btn-outline-primary mb-3" onclick='func(2)'>Среда</button>
-    <button type="button" class="btn btn-outline-primary mb-3" onclick='func(3)'>Четверг</button>
-    <button type="button" class="btn btn-outline-primary mb-3" onclick='func(4)'>Пятница</button>
-    <button type="button" class="btn btn-outline-primary mb-3" onclick='func(5)'>Суббота</button>
-    <button type="button" class="btn btn-outline-primary mb-3" onclick='func(6)'>Все дни</button>
+    <a href="?cur_btn=0"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(0)'>Понедельник</button></a>
+    <a href="?cur_btn=1"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(1)'>Вторник</button></a>
+    <a href="?cur_btn=2"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(2)'>Среда</button></a>
+    <a href="?cur_btn=3"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(3)'>Четверг</button></a>
+    <a href="?cur_btn=4"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(4)'>Пятница</button></a>
+    <a href="?cur_btn=5"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(5)'>Суббота</button></a>
+    <a href="?cur_btn=6"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(6)'>Все дни</button></a>
     <div class="d-flex flex-wrap ml-3" style="width: 100%;">
-    {% for tor in content %}
         <div class="card text-white bg-secondary mb-3 me-3" style="width: 15rem;">
-          <div class="card-header">{{ tor.idTeacher }}</div>
-          <div class="card-body">
-            <h5 class="card-title">{{ tor.idDiscipline }}</h5>
-            <p class="card-text">{{ tor.idGroup }}</p>
-            <p class="card-text">{{ tor.datetime }}</p>
-            <p class="card-text">{{ tor.date }}</p>
-          </div>
+            <div class="card-header">{{ cur_btn }}</div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <p class="card-text"></p>
+                <p class="card-text"></p>
+            </div>
         </div>
-    {% endfor %}
     </div>
 {% endblock %}

@@ -28,7 +28,7 @@
                   <a class="nav-link" aria-current="page" href="{% url 'home' %}">Main page</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link">Registration</a>
+                  <a class="nav-link" href="">Registration</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" aria-current="page" href="admin">Admin</a>
@@ -42,27 +42,8 @@
     </div>
 </body>
 <script>
-    async function func(x) {
-        for(let i=0; i<7; i++)
-            document.getElementsByClassName('btn')[i].classList.remove('active')
-        document.getElementsByClassName('btn')[x].classList.add('active')
-        localStorage.numberBtn = x
-
-
-        let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits'
-        let response = await fetch(url)
-
-        let commits = await response.json()
-
-<!--        alert(commits[0].author.login)-->
-        console.log(commits[0])
-    }
     window.onload = function() {
-        if (localStorage.getItem('numberBtn')) {
-            for(let i=0; i<7; i++)
-                document.getElementsByClassName('btn')[i].classList.remove('active')
-                document.getElementsByClassName('btn')[localStorage.getItem('numberBtn')].classList.add('active')
-        } else document.getElementsByClassName('btn')[6].classList.add('active')
+        document.getElementsByClassName('btn')[{{ cur_btn }}].classList.add('active')
     }
 </script>
 </html>
