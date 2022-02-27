@@ -5,7 +5,7 @@ from .models import *
 
 
 def index(request):
-    torrents = Lesson.objects.all()
+    torrents = Lesson.objects.all().order_by('datetime')
     return render(request, 'smartapp/index.html', {'title': 'Главная страница', 'content': torrents})
 
 

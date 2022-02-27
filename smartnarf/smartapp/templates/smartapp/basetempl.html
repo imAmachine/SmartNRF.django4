@@ -42,11 +42,20 @@
     </div>
 </body>
 <script>
-    function func(x) {
+    async function func(x) {
         for(let i=0; i<7; i++)
             document.getElementsByClassName('btn')[i].classList.remove('active')
         document.getElementsByClassName('btn')[x].classList.add('active')
         localStorage.numberBtn = x
+
+
+        let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits'
+        let response = await fetch(url)
+
+        let commits = await response.json()
+
+<!--        alert(commits[0].author.login)-->
+        console.log(commits[0])
     }
     window.onload = function() {
         if (localStorage.getItem('numberBtn')) {
