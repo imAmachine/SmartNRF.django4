@@ -4,22 +4,29 @@
 {% endblock %}
 
 {% block content %}
-    <a href="?cur_btn=0"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(0)'>Понедельник</button></a>
-    <a href="?cur_btn=1"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(1)'>Вторник</button></a>
-    <a href="?cur_btn=2"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(2)'>Среда</button></a>
-    <a href="?cur_btn=3"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(3)'>Четверг</button></a>
-    <a href="?cur_btn=4"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(4)'>Пятница</button></a>
-    <a href="?cur_btn=5"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(5)'>Суббота</button></a>
-    <a href="?cur_btn=6"><button type="button" class="btn btn-outline-primary mb-3" onclick='func(6)'>Все дни</button></a>
-    <div class="d-flex flex-wrap ml-3" style="width: 100%;">
-        <div class="card text-white bg-secondary mb-3 me-3" style="width: 15rem;">
-            <div class="card-header">{{ dataFront }}</div>
+    <a href="?cur_btn=0"><button type="button" class="btn btn-outline-primary mb-3">Понедельник</button></a>
+    <a href="?cur_btn=1"><button type="button" class="btn btn-outline-primary mb-3">Вторник</button></a>
+    <a href="?cur_btn=2"><button type="button" class="btn btn-outline-primary mb-3">Среда</button></a>
+    <a href="?cur_btn=3"><button type="button" class="btn btn-outline-primary mb-3">Четверг</button></a>
+    <a href="?cur_btn=4"><button type="button" class="btn btn-outline-primary mb-3">Пятница</button></a>
+    <a href="?cur_btn=5"><button type="button" class="btn btn-outline-primary mb-3">Суббота</button></a>
+    <a href="?cur_btn=6"><button type="button" class="btn btn-outline-primary mb-3">Все дни</button></a>
+    <div class="d-flex flex-wrap ml-3 block-item">
+        {% for item in dataFront %}
+        <div class="card text-white bg-secondary mb-3 card-item" onclick="selectCart('{{ item.idDiscipline }}', '{{ item.idTeacher }}')">
+            <div class="card-header">{{ item.idGroup }}</div>
             <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text"></p>
-                <p class="card-text"></p>
-                <p class="card-text"></p>
+                <p class="card-text">{{ item.idDiscipline }}</p>
+                <p class="card-text">{{ item.idTeacher }}</p>
+                <p class="card-text">{{ item.datetime }}</p>
             </div>
         </div>
+        {% endfor %}
+    </div>
+    <div class="card block-item card-info">
+      <div class="card-body mx-auto text-white">
+        <p class="card-text" id="idComment">Выберите пару</p>
+        <p class="card-text" id="idHomework"></p>
+      </div>
     </div>
 {% endblock %}

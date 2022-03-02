@@ -7,16 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <title>{% block title %}{% endblock %}</title>
-    <style>
-    * {
-        user-select: none;
-    }
-
-    .btn:active, :hover, :focus {
-        outline: 0;
-        outline-offset: 0;
-    }
-</style>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body class="">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
@@ -44,6 +35,11 @@
 <script>
     window.onload = function() {
         document.getElementsByClassName('btn')[{{ cur_btn }}].classList.add('active')
+    }
+
+    let selectCart = (discipline, teacher) => {
+        document.getElementById('idComment').innerHTML = `Домашняя работа ${discipline}`
+        document.getElementById('idHomework').innerHTML = `Комментарий ${teacher}`
     }
 </script>
 </html>

@@ -24,7 +24,7 @@ class IndexView(TemplateView):
         cur_btn = request.GET.get('cur_btn', datetime.datetime.today().weekday())
         context = {
             'cur_btn': cur_btn,
-            'dataFront': Lesson.objects.filter(datetime__week_day=int(cur_btn)+2)
+            'dataFront': Lesson.objects.filter(datetime__week_day=int(cur_btn) + 2)
         }
 
         # cur_btn = datetime.datetime.today().weekday()
