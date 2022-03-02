@@ -47,7 +47,7 @@ class SubGroup(models.Model):
 
 # модель преподавателя
 class Teacher(models.Model):
-    FIO = models.CharField(max_length=255)
+    FIO = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         return self.FIO
