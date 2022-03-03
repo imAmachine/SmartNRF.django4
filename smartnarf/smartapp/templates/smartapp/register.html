@@ -4,16 +4,13 @@
 Регистрация
 {% endblock %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
     <h1>Регистрация</h1>
     <form method="post" class="container">
         {% csrf_token %}
-
-        <h3>Имя</h3>
-        {{ form.username }}
-        <h3>Пароль</h3>
-        {{ form.password }}
-        {{ form.password2 }}
+        {{ register_form|crispy }}
         <hr>
         <button type="submit" class="btn btn-outline-success">Регистрация</button>
     </form>

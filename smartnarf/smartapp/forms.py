@@ -1,25 +1,20 @@
 #from .models import User
-from django.forms import ModelForm, TextInput, CharField, PasswordInput
+from django.forms import ModelForm, TextInput, CharField, PasswordInput, ModelChoiceField
+from django.contrib.auth.forms import UserCreationForm
+from authentication.models import User
+from .models import Group
 
 
-# class UserRegisterForm(ModelForm):
-#     password2 = CharField(label='password2', widget=PasswordInput(attrs={
-#                 'class': 'form-control mb-2',
-#                 'placeholder': 'Повторите пароль'
-#             }))
-#
-#     class Meta:
-#         model = User
-#         fields = ['username', 'password']
-#
-#         widgets = {
-#             'username': TextInput(attrs={
-#                 'class': 'form-control mb-2',
-#                 'placeholder': 'Введите имя',
-#                 'label': 'hui'
-#             }),
-#             'password': PasswordInput(attrs={
-#                 'class': 'form-control mb-2',
-#                 'placeholder': 'Введите пароль'
-#             })
-#         }
+class NewUserForm(UserCreationForm):
+	#group = ModelChoiceField(queryset=Group.objects.all(), label='Huisosi')
+
+	class Meta:
+		model = User
+		fields = ("username", "group", "password1", "password2")
+
+	def save(self, commit=True):
+		user = super(NewUserForm, self).save(commit=False)
+
+		if commit:
+			user.save()
+		return user
