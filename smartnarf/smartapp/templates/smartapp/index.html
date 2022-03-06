@@ -1,32 +1,60 @@
 {% extends 'smartapp/basetempl.html' %}
+{% load static %}
 {% block title %}
     {{ title }}
 {% endblock %}
 
 {% block content %}
-    <a href="?cur_btn=0"><button type="button" class="btn btn-outline-primary mb-3">Понедельник</button></a>
-    <a href="?cur_btn=1"><button type="button" class="btn btn-outline-primary mb-3">Вторник</button></a>
-    <a href="?cur_btn=2"><button type="button" class="btn btn-outline-primary mb-3">Среда</button></a>
-    <a href="?cur_btn=3"><button type="button" class="btn btn-outline-primary mb-3">Четверг</button></a>
-    <a href="?cur_btn=4"><button type="button" class="btn btn-outline-primary mb-3">Пятница</button></a>
-    <a href="?cur_btn=5"><button type="button" class="btn btn-outline-primary mb-3">Суббота</button></a>
-    <a href="?cur_btn=6"><button type="button" class="btn btn-outline-primary mb-3">Все дни</button></a>
-    <div class="d-flex flex-wrap ml-3 block-item">
+    <div class="btns-container">
+        <a class="btn-header" href="?cur_btn=0"><button type="button" class="btn btn-outline-primary mb-3">Понедельник</button></a>
+        <a class="btn-header" href="?cur_btn=1"><button type="button" class="btn btn-outline-primary mb-3">Вторник</button></a>
+        <a class="btn-header" href="?cur_btn=2"><button type="button" class="btn btn-outline-primary mb-3">Среда</button></a>
+        <a class="btn-header" href="?cur_btn=3"><button type="button" class="btn btn-outline-primary mb-3">Четверг</button></a>
+        <a class="btn-header" href="?cur_btn=4"><button type="button" class="btn btn-outline-primary mb-3">Пятница</button></a>
+        <a class="btn-header" href="?cur_btn=5"><button type="button" class="btn btn-outline-primary mb-3">Суббота</button></a>
+        <a class="btn-header" href="?cur_btn=6"><button type="button" class="btn btn-outline-primary mb-3">Все дни</button></a>
+    </div>
+    <ul class="list-group hidden">
+        <li class="list-group-item"><a href="/">Главная</a></li>
+        <li class="list-group-item"><a href="/lk">Личный кабинет</a></li>
+        <li class="list-group-item"><a href="/registration">Регистрация</a></li>
+        <li class="list-group-item"><a href="/admin">Admin</a></li>
+    </ul>
+    <select class="form-select" onchange="window.location.href = this.options[this.selectedIndex].value">
+        <option value="?cur_btn=0">Понедельник</option>
+        <option value="?cur_btn=1">Вторник</option>
+        <option value="?cur_btn=2">Среда</option>
+        <option value="?cur_btn=3">Четверг</option>
+        <option value="?cur_btn=4">Пятница</option>
+        <option value="?cur_btn=5">Суббота</option>
+        <option value="?cur_btn=6">Все дни</option>
+    </select>
+    <div class="block-cards">
         {% for item in dataFront %}
-        <div class="card text-white bg-secondary mb-3 card-item" onclick="selectCart('{{ item.idDiscipline }}', '{{ item.idTeacher }}')">
-            <div class="card-header">{{ item.idGroup }}</div>
-            <div class="card-body">
-                <p class="card-text">{{ item.idDiscipline }}</p>
-                <p class="card-text">{{ item.idTeacher }}</p>
-                <p class="card-text">{{ item.datetime }}</p>
+        <div class="card mb-3 card-item-day" onclick="selectCart('{{ item.idDiscipline }}', '{{ item.idTeacher }}')">
+            <div class="card-header">{{ item.datetime }} - {{ item.idDiscipline }}</div>
+            <div class="d-flex">
+                <div class="card-body">
+                    <p class="card-text">{{ item.idTeacher }}</p>
+                    <p class="card-text">{{ item.idGroup }}</p>
+                </div>
+                <div class="d-flex img-homework">
+                    <img src="{% static 'img/book.svg' %}">
+                </div>
             </div>
         </div>
         {% endfor %}
     </div>
-    <div class="card block-item card-info">
-      <div class="card-body mx-auto text-white">
-        <p class="card-text" id="idComment">Выберите пару</p>
-        <p class="card-text" id="idHomework"></p>
-      </div>
-    </div>
+<!--    <div class="block-item block-cards">-->
+<!--            {% for item in dataFront %}-->
+<!--            <div class="card mb-3 card-item" onclick="selectCart('{{ item.idDiscipline }}', '{{ item.idTeacher }}')">-->
+<!--                <div class="card-header">{{ item.idGroup }}</div>-->
+<!--                <div class="card-body">-->
+<!--                    <p class="card-text">{{ item.idDiscipline }}</p>-->
+<!--                    <p class="card-text">{{ item.idTeacher }}</p>-->
+<!--                    <p class="card-text">{{ item.datetime }}</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
 {% endblock %}
