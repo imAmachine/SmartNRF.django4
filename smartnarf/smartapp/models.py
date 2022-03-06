@@ -29,25 +29,9 @@ class SubGroup(models.Model):
         return self.name
 
 
-# модель пользователя
-# class User(models.Model):
-#     username = models.CharField(max_length=80, unique=True)
-#     password = models.CharField(max_length=20, validators=[MinLengthValidator(8)])
-#     group = models.ForeignKey(Group, on_delete=models.CASCADE)
-#     idSubGroup = models.ForeignKey(SubGroup, null=True, on_delete=models.CASCADE)
-#     perms = models.CharField(default='user', max_length=25)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#
-#     REQUIRED_FIELDS = ['username', 'password']
-#
-#     def __str__(self):
-#         return self.username
-
-
 # модель преподавателя
 class Teacher(models.Model):
-    FIO = models.CharField(max_length=255)
+    FIO = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         return self.FIO
