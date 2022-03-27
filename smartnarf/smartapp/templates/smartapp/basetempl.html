@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="static/burger.css">
+    <script src="static/burger.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -16,13 +17,16 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto mb-2 mb-md-0">
               <li class="nav-item active">
-                  <a class="nav-link" aria-current="page" href="{% url 'home' %}">Main page</a>
+                    <a class="nav-link" aria-current="page" href="{% url 'home' %}">Main page</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="">Registration</a>
+                    <a class="nav-link" href="">Registration</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="admin">Admin</a>
+                    <a class="nav-link" aria-current="page" href="/lk">Личный кабинет</a>
+              </li>
+              <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="admin">Admin</a>
               </li>
           </ul>
         </div>
@@ -33,49 +37,14 @@
           </div>
       </div>
     </nav>
+    <ul class="list-group hidden">
+        <a href="/"><li class="list-group-item">Главная</li></a>
+        <a href="/lk"><li class="list-group-item">Личный кабинет</li></a>
+        <a href="/registration"><li class="list-group-item">Регистрация</li></a>
+        <a href="/admin"><li class="list-group-item">Admin</li></a>
+    </ul>
     <div id="content" class="container">
         {% block content %}{% endblock %}
     </div>
 </body>
-<script>
-    window.onload = () => {
-        document.getElementsByClassName('btn')[{{ cur_btn }}].classList.add('active')
-        document.getElementsByClassName('form-select')[0].value = document.getElementsByClassName('form-select')[0].options[{{ cur_btn }}].value
-        mobileLayout()
-    }
-
-    let selectCart = (discipline, teacher) => {
-        document.getElementById('idComment').innerHTML = `Домашняя работа ${discipline}`
-        document.getElementById('idHomework').innerHTML = `Комментарий ${teacher}`
-    }
-
-    window.addEventListener('resize', function() {
-        mobileLayout()
-    });
-
-    let mobileLayout = () => {
-        if (window.innerWidth <= 767) {
-            document.getElementsByClassName('burger')[0].classList.add('burger-active')
-            document.getElementsByClassName('form-select')[0].classList.remove('hidden')
-        }
-        else {
-            document.getElementsByClassName('burger')[0].classList.remove('burger-active')
-            document.getElementsByClassName('form-select')[0].classList.add('hidden')
-            document.getElementsByClassName('list-group')[0].classList.add('hidden')
-        }
-    }
-
-    let openMobileMenu = () => {
-        document.getElementsByClassName('list-group')[0].classList.toggle('hidden')
-    }
-
-    let prevScrollpos = window.pageYOffset;
-
-    window.onscroll = function() {
-      let currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) document.getElementsByClassName('form-select')[0].classList.remove('form-select-hide')
-      else document.getElementsByClassName('form-select')[0].classList.add('form-select-hide')
-      prevScrollpos = currentScrollPos;
-    }
-</script>
 </html>
